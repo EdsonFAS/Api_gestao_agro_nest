@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import * as dotenv from 'dotenv';
 import { User } from './user/entities/user.entity';
+import { AuthModule } from './auth/auth.module';
 dotenv.config();
 @Module({
   imports: [
@@ -18,7 +19,8 @@ dotenv.config();
        entities: [User], // Entidade Saude incluída
       synchronize: false,
     }),
-    UserModule
+    UserModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
