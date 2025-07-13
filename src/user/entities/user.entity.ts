@@ -21,7 +21,7 @@ export class User {
         @Column()
         CPF: string;
     
-        @Column()
+        @Column({ type: 'date' })
         DataNascimento: Date;
 
         @Column()
