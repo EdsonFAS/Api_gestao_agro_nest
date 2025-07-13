@@ -14,6 +14,8 @@ import { SaudeModule } from './saude/saude.module';
 import { Saude } from './saude/entities/saude.entity';
 import { RebanhosModule } from './rebanhos/rebanhos.module';
 import { Rebanho } from './rebanhos/entities/rebanho.entity';
+import { AlimentacaoModule } from './alimentacao/alimentacao.module';
+import { Alimentacao } from './alimentacao/entities/alimentacao.entity';
 dotenv.config();
 @Module({
   imports: [
@@ -24,7 +26,7 @@ dotenv.config();
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-       entities: [User,Animal,Saude,Rebanho], // Entidade Saude incluída
+       entities: [User,Animal,Saude,Rebanho,Alimentacao], // Entidade Saude incluída
       synchronize: false,
     }),
     UserModule,
@@ -32,6 +34,7 @@ dotenv.config();
     AnimalModule,
     SaudeModule,
     RebanhosModule,
+    AlimentacaoModule
     
   ],
   controllers: [AppController],
