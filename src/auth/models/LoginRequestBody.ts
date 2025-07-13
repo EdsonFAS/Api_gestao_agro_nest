@@ -2,8 +2,8 @@ import { IsEmail, IsString } from 'class-validator';
 
 export class LoginRequestBody {
   @IsEmail()
-  email: string;
+  Email: string;
 
   @IsString()
-  password: string;
+  Senha: string;
 }
