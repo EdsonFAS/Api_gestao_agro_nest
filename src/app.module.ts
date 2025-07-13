@@ -18,6 +18,8 @@ import { AlimentacaoModule } from './alimentacao/alimentacao.module';
 import { Alimentacao } from './alimentacao/entities/alimentacao.entity';
 import { PastagemModule } from './pastagem/pastagem.module';
 import { Pastagem } from './pastagem/entities/pastagem.entity';
+import { ProducaoModule } from './producao/producao.module';
+import { Producao } from './producao/entities/producao.entity';
 dotenv.config();
 @Module({
   imports: [
@@ -28,7 +30,7 @@ dotenv.config();
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-       entities: [User,Animal,Saude,Rebanho,Alimentacao,Pastagem], // Entidade Saude incluída
+       entities: [User,Animal,Saude,Rebanho,Alimentacao,Pastagem,Producao], // Entidade Saude incluída
       synchronize: false,
     }),
     UserModule,
@@ -37,7 +39,8 @@ dotenv.config();
     SaudeModule,
     RebanhosModule,
     AlimentacaoModule,
-    PastagemModule
+    PastagemModule,
+    ProducaoModule
     
   ],
   controllers: [AppController],
