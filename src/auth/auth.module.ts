@@ -16,7 +16,8 @@ dotenv.config();
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '30d' },
     }),
-    UserModule
+    UserModule,
+    JwtModule
   ],
   controllers: [AuthController],
   providers: [AuthService,LocalStrategy,]

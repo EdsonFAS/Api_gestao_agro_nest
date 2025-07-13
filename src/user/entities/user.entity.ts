@@ -16,7 +16,7 @@ export class User {
         Senha: string;
     
         @Column()
-        Email: String;
+        Email: string;
     
         @Column()
         CPF: string;
