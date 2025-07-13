@@ -8,6 +8,8 @@ import { User } from './user/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { AnimalModule } from './animal/animal.module';
+import { Animal } from './animal/entities/animal.entity';
 dotenv.config();
 @Module({
   imports: [
@@ -18,11 +20,12 @@ dotenv.config();
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-       entities: [User], // Entidade Saude incluída
+       entities: [User,Animal], // Entidade Saude incluída
       synchronize: false,
     }),
     UserModule,
     AuthModule,
+    AnimalModule
     
   ],
   controllers: [AppController],
