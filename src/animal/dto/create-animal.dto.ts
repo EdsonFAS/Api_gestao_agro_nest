@@ -29,4 +29,12 @@ export class CreateAnimalDto {
        @IsOptional()
     @IsString()
     Nome?: string;
+
+           @IsOptional()
+    @IsString()
+    IdPaterno?: string;
+
+          @IsOptional()
+    @IsString()
+    IdMatriz:string;
 }

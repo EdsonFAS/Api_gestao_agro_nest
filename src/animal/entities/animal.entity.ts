@@ -24,10 +24,10 @@ export class Animal {
   Nome: string;
 
   @Column()
-  IdPaterno: number;
+  IdPaterno: string;
 
   @Column()
-  IdMatriz: number;
+  IdMatriz: string;
 
   
 }
