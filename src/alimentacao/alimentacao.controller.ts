@@ -15,7 +15,7 @@ export class AlimentacaoController {
    }
 
   @Get()
-  @Render('alimentacao')
+
    async findAll() {
      const Alimentacao = await this.alimentacaoService.findAll()
      const AlimentacaoFormamtadas = Alimentacao.map(Alimentacao => ({

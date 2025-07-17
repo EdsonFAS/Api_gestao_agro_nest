@@ -1,4 +1,5 @@
--- DROP DATABASE GestaoAgro;
+-- Desenvolvido por Edson e Lhuany
+
 CREATE DATABASE GestaoAgro;
 USE GestaoAgro;
 
@@ -23,7 +24,7 @@ CREATE TABLE Rebanho (
 
 -- Tabela Animal
 CREATE TABLE Animal (
-	CodigoBrinco VARCHAR(5) NOT NULL  PRIMARY KEY,
+    CodigoBrinco VARCHAR(5) NOT NULL PRIMARY KEY,
     Nome VARCHAR(100),
     Raca VARCHAR(100) NOT NULL,
     Peso DOUBLE NOT NULL,
@@ -33,7 +34,7 @@ CREATE TABLE Animal (
     IdPaterno int,
     IdMatriz int,
     Id_Rebanho INT,
-      FOREIGN KEY (Id_Rebanho) REFERENCES Rebanho(IdRebanho)
+    FOREIGN KEY (Id_Rebanho) REFERENCES Rebanho(IdRebanho)
 );
 
 -- Tabela Pastagem
@@ -61,9 +62,8 @@ CREATE TABLE RebanhoAlimentacao (
     Id INT AUTO_INCREMENT PRIMARY KEY,
     fk_rebanho_IdRebanho INT null,
     fk_alimentacao_IdAlimentacao INT null,
-    FOREIGN KEY (fk_rebanho_IdRebanho) REFERENCES Rebanho(IdRebanho)   ON DELETE CASCADE,
-    FOREIGN KEY (fk_alimentacao_IdAlimentacao) REFERENCES Alimentacao(IdAlimentacao)  ON DELETE CASCADE
-  
+    FOREIGN KEY (fk_rebanho_IdRebanho) REFERENCES Rebanho(IdRebanho) ON DELETE CASCADE,
+    FOREIGN KEY (fk_alimentacao_IdAlimentacao) REFERENCES Alimentacao(IdAlimentacao) ON DELETE CASCADE
 );
 
 -- Tabela Saude
@@ -91,9 +91,9 @@ CREATE TABLE Producao (
 -- Dados Tabela Usuario
 INSERT INTO Usuario (NomeCompleto, NomeUsuario, Senha, Email, CPF, DataNascimento, Endereco)
 VALUES
-('João Teixeira', 'joaoteixeira', 'senha123', 'joao.teixeira@gmail.com', '123.456.789-00', '1990-01-15', 'Rua A, 123'),
-('Edson Fernando', 'edsonfernando', 'senha789', 'edson.fernando@gmail.com', '234.567.890-11', '1992-03-10', 'Rua C, 789'),
-('Lhuany Motta', 'lhuanymotta', 'senha012', 'lhuany.motta@gmail.com', '345.678.901-22', '1994-07-25', 'Avenida D, 101');
+('João Teixeira', 'joaoteixeira', '$2a$12$11UewkQJkJuNwNINawutgOURcFp3t7dnemP.X9pK67WTuxB68bKrW', 'joao.teixeira@gmail.com', '123.456.789-00', '1990-01-15', 'Rua A, 123'), -- senha 123
+('Edson Fernando', 'edsonfernando', '$2a$12$cGOIaBGYXSxp04uge/YxYuAlcE3rvpo4WhjoPqQEmcVk7St6pyjW.', 'edson.fernando@gmail.com', '234.567.890-11', '1992-03-10', 'Rua C, 789'), -- senha789
+('Lhuany Motta', 'lhuanymotta', '$2a$12$CSMJ4w9EiDxL.t0yW4ATC.kcfnwRh3Og0B.o9PFeDsm8j38XwcFUC', 'lhuany.motta@gmail.com', '345.678.901-22', '1994-07-25', 'Avenida D, 101'); -- senha012
 
 -- Dados Tabela Rebanho
 INSERT INTO Rebanho (Tipo, Destino) VALUES
@@ -119,37 +119,37 @@ INSERT INTO Rebanho (Tipo, Destino) VALUES
 ('Corte Gourmet', 'Fazenda T');
 
 -- Dados Tabela Animal
-INSERT INTO Animal (CodigoBrinco, Raca, Peso, Sexo, Idade, Id_Rebanho) VALUES
-('BR001', 'Nelore', 450.5, 'M', 3, null),
-('BR002', 'Angus', 520.3, 'F', 4, null),
-('BR003', 'Brahman', 480.0, 'M', 2, null),
-('BR004', 'Holandesa', 600.7, 'F', 5, null),
-('BR005', 'Jersey', 430.2, 'F', 3, null),
-('BR006', 'Nelore', 460.2, 'M', 2, null),
-('BR007', 'Angus', 510.8, 'F', 3, null),
-('BR008', 'Brahman', 490.5, 'M', 4, null),
-('BR009', 'Holandesa', 620.3, 'F', 6, null),
-('BR010', 'Jersey', 440.1, 'F', 2, null),
-('BR011', 'Nelore', 470.5, 'M', 3, null),
-('BR012', 'Angus', 530.7, 'F', 5, null),
-('BR013', 'Brahman', 485.4, 'M', 2, null),
-('BR014', 'Holandesa', 590.8, 'F', 4, null),
-('BR015', 'Jersey', 420.6, 'F', 3, null),
-('BR016', 'Nelore', 455.3, 'M', 4, null),
-('BR017', 'Angus', 515.6, 'F', 3, null),
-('BR018', 'Brahman', 475.2, 'M', 2, null),
-('BR019', 'Holandesa', 610.4, 'F', 5, null),
-('BR020', 'Jersey', 425.9, 'F', 3, null),
-('BR021', 'Nelore', 465.7, 'M', 4, null),
-('BR022', 'Angus', 525.1, 'F', 5, null),
-('BR023', 'Brahman', 495.8, 'M', 3, null),
-('BR024', 'Holandesa', 605.2, 'F', 6, null),
-('BR025', 'Jersey', 435.4, 'F', 2, null),
-('BR026', 'Nelore', 445.9, 'M', 2, null),
-('BR027', 'Angus', 500.4, 'F', 3, null),
-('BR028', 'Brahman', 490.2, 'M', 4, null),
-('BR029', 'Holandesa', 630.7, 'F', 5, null),
-('BR030', 'Jersey', 415.8, 'F', 3, null);
+INSERT INTO Animal (CodigoBrinco, Nome, Raca, Peso, Sexo, Idade, Cor, Id_Rebanho) VALUES
+('BR001', 'Touro Bravo', 'Nelore', 450.5, 'M', 3, 'Branco', 1),
+('BR002', 'Vaca Mansa', 'Angus', 520.3, 'F', 4, 'Preto', 2),
+('BR003', 'Boi Pesado', 'Brahman', 480.0, 'M', 2, 'Cinza', 3),
+('BR004', 'Mimosa', 'Holandesa', 600.7, 'F', 5, 'Preto e Branco', 4),
+('BR005', 'Flor', 'Jersey', 430.2, 'F', 3, 'Marrom', 5),
+('BR006', 'Tornado', 'Nelore', 460.2, 'M', 2, 'Branco', 6),
+('BR007', 'Estrela', 'Angus', 510.8, 'F', 3, 'Preto', 7),
+('BR008', 'Gigante', 'Brahman', 490.5, 'M', 4, 'Cinza', 8),
+('BR009', 'Lua', 'Holandesa', 620.3, 'F', 6, 'Preto e Branco', 9),
+('BR010', 'Margarida', 'Jersey', 440.1, 'F', 2, 'Marrom', 10),
+('BR011', 'Raio', 'Nelore', 470.5, 'M', 3, 'Branco', 11),
+('BR012', 'Noite', 'Angus', 530.7, 'F', 5, 'Preto', 12),
+('BR013', 'Trovão', 'Brahman', 485.4, 'M', 2, 'Cinza', 13),
+('BR014', 'Sol', 'Holandesa', 590.8, 'F', 4, 'Preto e Branco', 14),
+('BR015', 'Rosa', 'Jersey', 420.6, 'F', 3, 'Marrom', 15),
+('BR016', 'Tempestade', 'Nelore', 455.3, 'M', 4, 'Branco', 16),
+('BR017', 'Nuvem', 'Angus', 515.6, 'F', 3, 'Preto', 17),
+('BR018', 'Furacão', 'Brahman', 475.2, 'M', 2, 'Cinza', 18),
+('BR019', 'Estrela Cadente', 'Holandesa', 610.4, 'F', 5, 'Preto e Branco', 19),
+('BR020', 'Dália', 'Jersey', 425.9, 'F', 3, 'Marrom', 20),
+('BR021', 'Relâmpago', 'Nelore', 465.7, 'M', 4, 'Branco', 1),
+('BR022', 'Lua Crescente', 'Angus', 525.1, 'F', 5, 'Preto', 2),
+('BR023', 'Vendaval', 'Brahman', 495.8, 'M', 3, 'Cinza', 3),
+('BR024', 'Via Láctea', 'Holandesa', 605.2, 'F', 6, 'Preto e Branco', 4),
+('BR025', 'Orquídea', 'Jersey', 435.4, 'F', 2, 'Marrom', 5),
+('BR026', 'Tufão', 'Nelore', 445.9, 'M', 2, 'Branco', 6),
+('BR027', 'Aurora', 'Angus', 500.4, 'F', 3, 'Preto', 7),
+('BR028', 'Ciclone', 'Brahman', 490.2, 'M', 4, 'Cinza', 8),
+('BR029', 'Andrômeda', 'Holandesa', 630.7, 'F', 5, 'Preto e Branco', 9),
+('BR030', 'Jasmim', 'Jersey', 415.8, 'F', 3, 'Marrom', 10);
 
 -- Dados Tabela Pastagem
 INSERT INTO Pastagem (AreaPastagem, LocalizacaoPastagem, Periodo, fk_Animal_CodigoBrinco) VALUES
@@ -202,7 +202,24 @@ INSERT INTO RebanhoAlimentacao (fk_rebanho_IdRebanho, fk_alimentacao_IdAlimentac
 VALUES
 (1, 1),
 (2, 2),
-(3, 3);
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10),
+(11, 11),
+(12, 12),
+(13, 13),
+(14, 14),
+(15, 15),
+(16, 16),
+(17, 17),
+(18, 18),
+(19, 19),
+(20, 20);
 
 -- Dados Tabela Saude
 INSERT INTO Saude (Veterinario, Status, Apetite, Temperatura, fk_Animal_CodigoBrinco, DataVerificacao) VALUES
@@ -259,3 +276,5 @@ SELECT * FROM Alimentacao;
 SELECT * FROM RebanhoAlimentacao;
 SELECT * FROM Saude;
 SELECT * FROM Producao;
+
+-- DROP DATABASE GestaoAgro;
