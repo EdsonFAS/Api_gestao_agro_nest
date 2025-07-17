@@ -30,7 +30,7 @@ export class AnimalService {
       throw new NotFoundException(`Animal com ID ${CodigoBrinco} não encontrado`);
     }
 
-    await this.AnimalRepository.update(CodigoBrinco, updateAnimalDto);
+    await this.AnimalRepository.update(CodigoBrinco,updateAnimalDto);
 
     return `Animal com ID ${CodigoBrinco} atualizado com sucesso`;
   }
